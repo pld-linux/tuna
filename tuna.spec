@@ -1,4 +1,3 @@
-# TODO: python-ethtool
 Summary:	Application tuning GUI and command line utility
 Summary(pl.UTF-8):	Graficzny interfejs oraz narzędzie linii poleceń do dostrajania aplikacji
 Name:		tuna
@@ -15,7 +14,7 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.612
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-#Requires:	python-ethtool
+Requires:	python-ethtool
 Requires:	python-linux-procfs >= 0.4.5
 Requires:	python-matplotlib
 Requires:	python-pygobject
