@@ -1,12 +1,12 @@
 Summary:	Application tuning GUI and command line utility
 Summary(pl.UTF-8):	Graficzny interfejs oraz narzędzie linii poleceń do dostrajania aplikacji
 Name:		tuna
-Version:	0.12
+Version:	0.13.1
 Release:	1
 License:	GPL v2
 Group:		Libraries/Python
 Source0:	https://www.kernel.org/pub/software/utils/tuna/%{name}-%{version}.tar.xz
-# Source0-md5:	a27ee9c3b8ea432fad9b69f0552dc3e8
+# Source0-md5:	9be3bb20075a8aedc956506484a5a6ad
 URL:		https://rt.wiki.kernel.org/index.php/Tuna
 BuildRequires:	gettext-devel
 BuildRequires:	python-devel >= 2
@@ -48,16 +48,13 @@ Tuna może być używana także jako narzędzie linii poleceń.
 %setup -q
 
 %build
-%{__python} setup.py build
+%py_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir}/tuna,%{_bindir},%{_datadir}/tuna,%{_mandir}/man8,%{_datadir}/polkit-1/actions,%{_desktopdir}}
 
-%{__python} setup.py install \
-	--skip-build \
-	--root=$RPM_BUILD_ROOT \
-	--optimize=2
+%py_install
 
 %py_postclean
 
