@@ -1,26 +1,28 @@
 Summary:	Application tuning GUI and command line utility
 Summary(pl.UTF-8):	Graficzny interfejs oraz narzędzie linii poleceń do dostrajania aplikacji
 Name:		tuna
-Version:	0.13.1
+Version:	0.14
 Release:	1
 License:	GPL v2
 Group:		Libraries/Python
 Source0:	https://www.kernel.org/pub/software/utils/tuna/%{name}-%{version}.tar.xz
-# Source0-md5:	9be3bb20075a8aedc956506484a5a6ad
+# Source0-md5:	d497e755aab78c9ce5c8db22d183894f
 URL:		https://rt.wiki.kernel.org/index.php/Tuna
 BuildRequires:	gettext-devel
 BuildRequires:	python-devel >= 2
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
+BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	python-ethtool
-Requires:	python-linux-procfs >= 0.4.5
+Requires:	python-linux-procfs >= 0.6
 Requires:	python-matplotlib
+Requires:	python-numpy
 Requires:	python-pygobject
 Requires:	python-pygtk-glade >= 2:2
 Requires:	python-pygtk-gtk >= 2:2
-Requires:	python-schedutils >= 0.2
+Requires:	python-schedutils >= 0.6
 Suggests:	python-inet_diag
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -46,6 +48,8 @@ Tuna może być używana także jako narzędzie linii poleceń.
 
 %prep
 %setup -q
+
+%{__sed} -i -e '1s,/usr/bin/python3,%{__python},' oscilloscope-cmd.py tuna-cmd.py
 
 %build
 %py_build
