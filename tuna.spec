@@ -1,12 +1,12 @@
 Summary:	Application tuning GUI and command line utility
 Summary(pl.UTF-8):	Graficzny interfejs oraz narzędzie linii poleceń do dostrajania aplikacji
 Name:		tuna
-Version:	0.14
-Release:	2
+Version:	0.14.1
+Release:	1
 License:	GPL v2
 Group:		Libraries/Python
 Source0:	https://www.kernel.org/pub/software/utils/tuna/%{name}-%{version}.tar.xz
-# Source0-md5:	d497e755aab78c9ce5c8db22d183894f
+# Source0-md5:	df6aaae30b35395ec7b4d5643a01d8ca
 URL:		https://rt.wiki.kernel.org/index.php/Tuna
 BuildRequires:	gettext-devel
 BuildRequires:	python-devel >= 2
