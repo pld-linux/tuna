@@ -1,29 +1,27 @@
 Summary:	Application tuning GUI and command line utility
 Summary(pl.UTF-8):	Graficzny interfejs oraz narzędzie linii poleceń do dostrajania aplikacji
 Name:		tuna
-Version:	0.14.1
+Version:	0.15
 Release:	1
 License:	GPL v2
 Group:		Libraries/Python
 Source0:	https://www.kernel.org/pub/software/utils/tuna/%{name}-%{version}.tar.xz
-# Source0-md5:	df6aaae30b35395ec7b4d5643a01d8ca
+# Source0-md5:	31c4cd0a9df82086d7792734bf699be2
 URL:		https://rt.wiki.kernel.org/index.php/Tuna
 BuildRequires:	gettext-devel
-BuildRequires:	python-devel >= 2
+BuildRequires:	python3-devel >= 1:3.2
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
-BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires:	python-ethtool
-Requires:	python-linux-procfs >= 0.6
-Requires:	python-matplotlib
-Requires:	python-numpy
-Requires:	python-pygobject
-Requires:	python-pygtk-glade >= 2:2
-Requires:	python-pygtk-gtk >= 2:2
-Requires:	python-schedutils >= 0.6
-Suggests:	python-inet_diag
+Requires:	gtk+3 >= 3.0
+Requires:	python3-ethtool
+Requires:	python3-linux-procfs >= 0.6
+Requires:	python3-matplotlib
+Requires:	python3-numpy
+Requires:	python3-pygobject3 >= 3.0
+Requires:	python3-schedutils >= 0.6
+Suggests:	python3-inet_diag
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -49,18 +47,14 @@ Tuna może być używana także jako narzędzie linii poleceń.
 %prep
 %setup -q
 
-%{__sed} -i -e '1s,/usr/bin/python3,%{__python},' oscilloscope-cmd.py tuna-cmd.py
-
 %build
-%py_build
+%py3_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir}/tuna,%{_bindir},%{_datadir}/tuna,%{_mandir}/man8,%{_datadir}/polkit-1/actions,%{_desktopdir}}
 
-%py_install
-
-%py_postclean
+%py3_install
 
 cp -p tuna/tuna_gui.glade $RPM_BUILD_ROOT%{_datadir}/tuna
 install tuna-cmd.py $RPM_BUILD_ROOT%{_bindir}/tuna
@@ -89,10 +83,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog docs/oscilloscope+tuna.html
 %attr(755,root,root) %{_bindir}/oscilloscope
 %attr(755,root,root) %{_bindir}/tuna
-%{py_sitescriptdir}/tuna
-%if "%{py_ver}" > "2.4"
-%{py_sitescriptdir}/tuna-%{version}-py*.egg-info
-%endif
+%{py3_sitescriptdir}/tuna
+%{py3_sitescriptdir}/tuna-%{version}-py*.egg-info
 %{_datadir}/tuna
 %dir %{_sysconfdir}/tuna
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/tuna.conf
