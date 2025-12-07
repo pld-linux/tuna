@@ -1,26 +1,26 @@
 Summary:	Application tuning GUI and command line utility
 Summary(pl.UTF-8):	Graficzny interfejs oraz narzędzie linii poleceń do dostrajania aplikacji
 Name:		tuna
-Version:	0.19
-Release:	2
+Version:	0.20
+Release:	1
 License:	GPL v2
 Group:		Libraries/Python
 Source0:	https://www.kernel.org/pub/software/utils/tuna/%{name}-%{version}.tar.xz
-# Source0-md5:	3aa4457451db7b83666d6bfd4ece12e4
+# Source0-md5:	2ba3bcb74c4bb4d3b32b72628f3665d8
 URL:		https://rt.wiki.kernel.org/index.php/Tuna
-BuildRequires:	gettext-devel
-BuildRequires:	python3-devel >= 1:3.2
+BuildRequires:	gettext-tools
+BuildRequires:	python3-devel >= 1:3.10
+BuildRequires:	python3-setuptools >= 1:61.0
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	gtk+3 >= 3.0
-Requires:	python3-ethtool
 Requires:	python3-linux-procfs >= 0.6
 Requires:	python3-matplotlib
+Requires:	python3-modules >= 1:3.10
 Requires:	python3-numpy
 Requires:	python3-pygobject3 >= 3.0
-Requires:	python3-schedutils >= 0.6
 Suggests:	python3-inet_diag
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
